@@ -1,0 +1,59 @@
+{
+  "name": "@app/mobile",
+  "private": true,
+  "version": "0.9.1",
+  "description": "",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "postinstall": "ts-node ./scripts/hooks/posthook",
+    "install:rnsdk": "ts-node ./scripts/install-rnsdk",
+    "adb:devices": "node ./var/adb-devices.js",
+    "ios:simulators": "xcrun simctl list",
+    "build:android": "node ./android/build-android.js",
+    "build:ios": "node ./ios/build-ios.js",
+    "clean:mobile": "node ./var/clean-mobile.js",
+    "start:rn": "ts-node ./scripts/start-rn.ts",
+    "start:android": "node ./android/start-android.js",
+    "start:ios": "node ./ios/start-ios.js"
+  },
+  "devDependencies": {
+    "@app/mobile": "file:./",
+    "@types/node": "^14",
+    "@types/react": "^16.9",
+    "@types/react-native": "^0.63.0",
+    "@types/react-redux": "^7.1.9"
+  },
+  "dependencies": {
+    "@app/client": "file:../app-client",
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/cli": "^4.14.0",
+    "@react-native-picker/picker": "^1.9.4",
+    "@react-navigation/core": "^3.7",
+    "@react-navigation/native": "^3.8",
+    "@sotaoi/client": "file:../packages/sotaoi-client",
+    "@sotaoi/omni": "file:../packages/sotaoi-omni",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "metro": "^0.59.0",
+    "metro-config": "^0.59.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "^0.63.0",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-paper": "^4.7.1",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-router-flux": "^4.2.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^2.15.0",
+    "react-native-vector-icons": "^8.0.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "4.1.5"
+  }
+}

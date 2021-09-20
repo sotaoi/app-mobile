@@ -1,0 +1,22 @@
+!.gitkeep
+
+# env
+/.env
+/env.json
+
+# app
+/build
+/node_modules
+
+# ide
+/.idea
+/.vscode
+
+# android
+/android/.gradle
+/android/app/build
+# ios
+/ios/Pods/
+/ios/Podfile.lock
+# var
+/var/rnsdk
