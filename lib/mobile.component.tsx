@@ -37,6 +37,7 @@ const MobileComponent = (): null | React.ReactElement => {
     BackHandler.addEventListener('hardwareBackPress', backHandler);
 
     const routerRefreshListener = RouterEvents.listen('router-refresh', () => {
+      console.log('refresh');
       const to = RouterEvents.getRedirectTo() || RouteChange.getCurrentPath();
       const [routeMatch, routes] = Navigation.getRouteMatch(to);
       RouterEvents.endRedirect();
@@ -62,7 +63,15 @@ const MobileComponent = (): null | React.ReactElement => {
     }
     const [, setState] = React.useState();
     forceUpdate = React.useCallback(() => setState({} as any), []); // ????????????
-    RouterEvents.isRedirecting() && RouterEvents.endRedirect();
+
+    const redirectingTo = RouterEvents.isRedirecting() ? RouterEvents.getRedirectTo() : null;
+    if (redirectingTo) {
+      RouterEvents.endRedirect();
+      if (Navigation.getRouteMatch(redirectingTo)[1].routeMatch) {
+        Navigation.refresh();
+        return null;
+      }
+    }
 
     React.useEffect(() => {
       return (): void => {

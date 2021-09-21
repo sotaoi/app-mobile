@@ -5,8 +5,9 @@ const extraNodeModules = {
   'react-dom': path.resolve('./node_modules/react-dom'),
   'react-native': path.resolve('./node_modules/react-native'),
   redux: path.resolve('./node_modules/redux'),
+  'react-redux': path.resolve('./node_modules/react-redux'),
 };
-// todo here: remove fullpaths
+
 const blacklistRegexes = [/scripts[\/\\].*/, /var[\/\\].*/];
 const watchFolders = [
   path.resolve('./../app-client'),
@@ -15,6 +16,14 @@ const watchFolders = [
 ];
 
 module.exports = {
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: false,
+      },
+    }),
+  },
   resolver: {
     extraNodeModules,
     blacklistRE: require('metro-config/src/defaults/blacklist')(blacklistRegexes),

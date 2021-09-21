@@ -13,6 +13,11 @@ import * as RouterFlux from 'react-native-router-flux';
 import * as ReactRedux from 'react-redux';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { storeEnvVars } from '@app/mobile/lib/global';
+import { GateLayout } from '@app/mobile/lib/components/gate-layout/gate-layout';
+import { MainLayout } from '@app/mobile/lib/components/main-layout/main-layout';
+import { HomeMobileView } from '@app/mobile/lib/components/home-mobile-view';
+import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/auth-user-web-view';
+import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-web-view';
 
 const appInfo = getAppInfo({ storeEnvVars });
 const domain = getAppDomain({ storeEnvVars });
@@ -27,8 +32,11 @@ const App = (): any => {
   const routerComponentFn = () => (
     <Router
       {...routes(
-        [],
-        {},
+        [HomeMobileView, AuthUserMobileView, RegisterUserMobileView],
+        {
+          'app.layouts.gate': GateLayout,
+          'app.layouts.main': MainLayout,
+        },
         {
           webComponent: () => null,
           mobileComponent: MobileComponent,
@@ -65,8 +73,7 @@ const App = (): any => {
 
   switch (true) {
     case state.flag === 'loading':
-      return null;
-    // return <Loading />;
+      return <Loading />;
     case state.flag === 'started':
       return <PaperProvider>{routerComponentFn()}</PaperProvider>;
     case state.flag === 'failed':
