@@ -1,0 +1,1 @@
+/Users/qwertypnk/sotaoi/sotaoieco/app-mobile/index.js
