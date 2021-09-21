@@ -37,7 +37,6 @@ const MobileComponent = (): null | React.ReactElement => {
     BackHandler.addEventListener('hardwareBackPress', backHandler);
 
     const routerRefreshListener = RouterEvents.listen('router-refresh', () => {
-      console.log('refresh');
       const to = RouterEvents.getRedirectTo() || RouteChange.getCurrentPath();
       const [routeMatch, routes] = Navigation.getRouteMatch(to);
       RouterEvents.endRedirect();
@@ -59,7 +58,7 @@ const MobileComponent = (): null | React.ReactElement => {
   const Component = (props: { render: RenderComponent }): null | React.ReactElement => {
     const currentRouteScheme = RouteChange.getRouteScheme();
     if (!currentRouteScheme) {
-      throw new Error('router mobile component error: route scheme failed');
+      throw new Error('Router mobile component error: route scheme failed');
     }
     const [, setState] = React.useState();
     forceUpdate = React.useCallback(() => setState({} as any), []); // ????????????
