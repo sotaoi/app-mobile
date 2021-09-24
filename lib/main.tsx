@@ -12,15 +12,15 @@ import { MobileComponent } from '@app/mobile/lib/mobile.component';
 import * as RouterFlux from 'react-native-router-flux';
 import * as ReactRedux from 'react-redux';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { storeEnvVars } from '@app/mobile/lib/global';
+import { Config } from '@sotaoi/config';
 import { GateLayout } from '@app/mobile/lib/components/gate-layout/gate-layout';
 import { MainLayout } from '@app/mobile/lib/components/main-layout/main-layout';
 import { HomeMobileView } from '@app/mobile/lib/components/home-mobile-view';
 import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/auth-user-web-view';
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-web-view';
 
-const appInfo = getAppInfo({ storeEnvVars });
-const domain = getAppDomain({ storeEnvVars });
+const appInfo = getAppInfo({ dumpEnvVars: () => Config.dumpEnvVars() });
+const domain = getAppDomain({ dumpEnvVars: () => Config.dumpEnvVars() });
 const appKernel = new AppKernel();
 
 const App = (): any => {
