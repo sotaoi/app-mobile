@@ -7,6 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
+    "bootstrap": "npm install --no-audit --no-funds --legacy-peer-deps",
     "postinstall": "ts-node ./scripts/hooks/posthook",
     "install:rnsdk": "ts-node ./scripts/install-rnsdk",
     "adb:devices": "node ./var/adb-devices.js",
@@ -23,7 +24,9 @@
     "@types/node": "^14",
     "@types/react": "^16.9",
     "@types/react-native": "^0.63.4",
-    "@types/react-redux": "^7.1.9"
+    "@types/react-redux": "^7.1.9",
+    "react": "file:./var/lib/react",
+    "react-dom": "file:./var/lib/react-dom"
   },
   "dependencies": {
     "@app/client": "file:../app-client",
@@ -38,12 +41,11 @@
     "@sotaoi/config": "^0.9.1",
     "@sotaoi/omni": "file:../packages/sotaoi-omni",
     "babel-loader": "^8.2.2",
+    "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "metro": "^0.59.0",
     "metro-config": "^0.59.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
     "react-native": "^0.63.4",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-paper": "^4.7.1",
@@ -51,6 +53,8 @@
     "react-native-router-flux": "^4.2.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^2.15.0",
+    "react-native-svg": "^12.1.1",
+    "react-native-svg-transformer": "^0.14.3",
     "react-native-vector-icons": "^8.0.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",

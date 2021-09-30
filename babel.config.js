@@ -15,5 +15,11 @@ module.exports = {
         alias: {},
       },
     ],
+    [
+      'babel-plugin-inline-import',
+      {
+        extensions: ['.svg'],
+      },
+    ],
   ],
 };

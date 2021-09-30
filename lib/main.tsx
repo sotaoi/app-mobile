@@ -16,8 +16,9 @@ import { Config } from '@sotaoi/config';
 import { GateLayout } from '@app/mobile/lib/components/gate-layout/gate-layout';
 import { MainLayout } from '@app/mobile/lib/components/main-layout/main-layout';
 import { HomeMobileView } from '@app/mobile/lib/components/home-mobile-view';
-import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/auth-user-web-view';
-import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-web-view';
+import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/auth-user-mobile-view';
+import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
+import { SvgCssUri } from 'react-native-svg';
 
 const appInfo = getAppInfo({ dumpEnvVars: () => Config.dumpEnvVars() });
 const domain = getAppDomain({ dumpEnvVars: () => Config.dumpEnvVars() });
@@ -58,7 +59,7 @@ const App = (): any => {
       Loading,
       ErrorComponent,
       true,
-      AsyncStorage,
+      { asyncStorage: AsyncStorage, svgCssUri: SvgCssUri },
     )
       .then(() => {
         setState({ flag: 'started', error: null });
@@ -73,11 +74,19 @@ const App = (): any => {
 
   switch (true) {
     case state.flag === 'loading':
-      return <Loading />;
+      return (
+        <PaperProvider>
+          <Loading />
+        </PaperProvider>
+      );
     case state.flag === 'started':
       return <PaperProvider>{routerComponentFn()}</PaperProvider>;
     case state.flag === 'failed':
-      return <ErrorComponent error={state.error ? state.error : new Error('something went wrong')} />;
+      return (
+        <PaperProvider>
+          <ErrorComponent error={state.error ? state.error : new Error('something went wrong')} />
+        </PaperProvider>
+      );
     default:
       throw new Error('unknown mobile init flag');
   }
