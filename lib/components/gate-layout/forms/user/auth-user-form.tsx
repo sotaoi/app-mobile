@@ -4,7 +4,6 @@ import { BaseField } from '@sotaoi/client/forms';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { View, Text, TextInput } from 'react-native';
 import { Spacer } from '@app/mobile/lib/components/generic/utility';
-import { GenericErrorComponent } from '@sotaoi/client/components';
 
 interface FieldState {
   [key: string]: BaseField<any>;
@@ -12,8 +11,6 @@ interface FieldState {
 const AuthUserForm = (props: { form: AuthForm }): null | React.ReactElement => {
   const Form = props.form;
   const fields = Form.getFields<FieldState>();
-
-  return <GenericErrorComponent />;
 
   return (
     <View style={{ margin: 20 }}>
