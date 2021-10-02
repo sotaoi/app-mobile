@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "bootstrap": "npm install --no-audit --no-funds --legacy-peer-deps",
+    "bootstrap": "npm install --no-audit --no-fund --legacy-peer-deps",
     "postinstall": "ts-node ./scripts/hooks/posthook",
     "install:rnsdk": "ts-node ./scripts/install-rnsdk",
     "adb:devices": "node ./var/adb-devices.js",
