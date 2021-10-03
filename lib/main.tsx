@@ -4,7 +4,7 @@ import { Bootstrap } from '@sotaoi/client/bootstrap';
 import { createStore } from 'redux';
 import { Loading } from '@app/client/components/generic/loading';
 import { ErrorComponent } from '@app/client/components/generic/error-component';
-import { getAppInfo, getAppDomain } from '@sotaoi/omni/get-app-info';
+import { getAppInfo, getAppDomain } from '@app/mobile/lib/helpers/get-app-info';
 import { AppKernel } from '@sotaoi/client/app-kernel';
 import { routes } from '@app/client/routes';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -12,7 +12,6 @@ import { MobileComponent } from '@app/mobile/lib/mobile.component';
 import * as RouterFlux from 'react-native-router-flux';
 import * as ReactRedux from 'react-redux';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { Config } from '@sotaoi/config';
 import { GateLayout } from '@app/mobile/lib/components/gate-layout/gate-layout';
 import { MainLayout } from '@app/mobile/lib/components/main-layout/main-layout';
 import { HomeMobileView } from '@app/mobile/lib/components/home-mobile-view';
@@ -20,8 +19,8 @@ import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
 import { SvgCssUri } from 'react-native-svg';
 
-const appInfo = getAppInfo({ dumpEnvVars: () => Config.dumpEnvVars() });
-const domain = getAppDomain({ dumpEnvVars: () => Config.dumpEnvVars() });
+const appInfo = getAppInfo(null);
+const domain = getAppDomain(null);
 const appKernel = new AppKernel();
 
 const App = (): any => {

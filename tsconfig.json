@@ -13,7 +13,13 @@
     "module": "commonjs",
     "isolatedModules": true,
     "noEmitOnError": true,
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "@app/client/*": ["../app-client/*"],
+      "@app/mobile/*": ["./*"],
+      "@sotaoi/client/*": ["../packages/sotaoi-client"],
+      "@sotaoi/omni/*": ["../packages/sotaoi-omni"]
+    }
   },
   "include": ["./lib/**/*", "./scripts"]
 }
