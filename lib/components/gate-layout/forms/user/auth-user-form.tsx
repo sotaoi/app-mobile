@@ -26,29 +26,21 @@ const AuthUserForm = (props: { form: AuthForm }): null | React.ReactElement => {
                 <Text style={{ color: '#ff3333' }}>{error}</Text>
               </View>
             ))}
-          <fields.email.component
-            className={'w-full p-2 mb-6 text-black border-b-2 border-green-500 outline-none focus:bg-gray-300'}
-            placeholder={'email'}
-          />
+          <fields.email.component keyboardType={'email-address'} placeholder={'email'} />
           <Spacer />
 
           {fields.password.wasTouched() &&
             fields.password.getErrors().map((error: any, index: any) => (
-              <View key={index} style={{ marginBottom: 10 }}>
+              <View style={{ marginBottom: 10 }}>
                 <Text style={{ color: '#ff3333' }}>{error}</Text>
               </View>
             ))}
-          <fields.password.component
-            autoComplete={'off'}
-            type={'password'}
-            placeholder={'password'}
-            className={'w-full p-2 mb-6 text-black border-b-2 border-green-500 outline-none focus:bg-gray-300'}
-          />
+          <fields.password.component secureTextEntry={true} placeholder={'password'} />
           <Spacer />
 
           {fields.rememberMe.wasTouched() &&
             fields.rememberMe.getErrors().map((error: any, index: any) => (
-              <View key={index} style={{ marginBottom: 10 }}>
+              <View style={{ marginBottom: 10 }}>
                 <Text style={{ color: '#ff3333' }}>{error}</Text>
               </View>
             ))}

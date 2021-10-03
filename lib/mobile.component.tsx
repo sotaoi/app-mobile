@@ -7,6 +7,7 @@ import { BackHandler } from 'react-native';
 import { Provider } from 'react-redux';
 import { RenderComponent } from '@sotaoi/omni/state';
 
+let initialised = false;
 let forceUpdate: () => void = () => undefined;
 let routes: Routes = {
   routeMatch: null,
@@ -17,10 +18,21 @@ let routes: Routes = {
 const MobileComponent = (): null | React.ReactElement => {
   const extendedComponents = Navigation.extendedComponents;
 
-  routes = Navigation.getRouteMatch(RouteChange.getCurrentPath())[1];
+  let routerRefreshListener: () => void, backHandler: () => true;
+  if (!initialised) {
+    initialised = true;
 
-  React.useEffect((): (() => void) => {
-    const backHandler = (): true => {
+    routerRefreshListener = RouterEvents.listen('router-refresh', () => {
+      const to = RouterEvents.getRedirectTo() || RouteChange.getCurrentPath();
+      const [routeMatch, routes] = Navigation.getRouteMatch(to);
+      false && console.debug('Acknowledging routes:', routes);
+      RouterEvents.endRedirect();
+      RouteChange.replaceCurrentPath(to);
+      RouteChange.replaceRouteScheme(routeMatch);
+      routeMatch !== RouteChange.getPrevRouteScheme() ? RouterActions.replace(routeMatch) : forceUpdate();
+    });
+
+    backHandler = (): true => {
       const prevRouteScheme = RouteChange.getPrevRouteScheme();
       const currentRouteScheme = RouteChange.getRouteScheme();
       const popped = RouteChange.popCurrentPath();
@@ -36,15 +48,14 @@ const MobileComponent = (): null | React.ReactElement => {
     };
     BackHandler.addEventListener('hardwareBackPress', backHandler);
 
-    const routerRefreshListener = RouterEvents.listen('router-refresh', () => {
-      const to = RouterEvents.getRedirectTo() || RouteChange.getCurrentPath();
-      const [routeMatch, routes] = Navigation.getRouteMatch(to);
-      RouterEvents.endRedirect();
-      RouteChange.replaceCurrentPath(to);
-      RouteChange.replaceRouteScheme(routeMatch);
-      routeMatch !== RouteChange.getPrevRouteScheme() ? RouterActions.replace(routeMatch) : forceUpdate();
-    });
+    console.debug('Router initial path:', RouteChange.getCurrentPath());
+  }
+
+  routes = Navigation.getRouteMatch(RouteChange.getCurrentPath())[1];
+
+  React.useEffect((): (() => void) => {
     return (): void => {
+      forceUpdate = (): void => undefined;
       BackHandler.removeEventListener('hardwareBackPress', backHandler);
       routerRefreshListener();
     };
@@ -67,22 +78,18 @@ const MobileComponent = (): null | React.ReactElement => {
     if (redirectingTo) {
       RouterEvents.endRedirect();
       if (Navigation.getRouteMatch(redirectingTo)[1].routeMatch) {
-        Navigation.refresh();
+        setTimeout(() => Navigation.refresh(), 100);
         return null;
       }
     }
-
-    React.useEffect(() => {
-      return (): void => {
-        forceUpdate = (): void => undefined;
-      };
-    }, []);
 
     // any is because we allowed abstract classes in route definitions
     let Render: any = props.render;
 
     for (const extendedComponent of extendedComponents) {
-      Object.getPrototypeOf(extendedComponent).toString() === Render.toString() && (Render = extendedComponent);
+      if (Object.getPrototypeOf(extendedComponent).toString() === Render.toString()) {
+        Render = extendedComponent;
+      }
     }
 
     if (!Navigation.reduxStore) {

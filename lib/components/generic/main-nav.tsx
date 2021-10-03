@@ -1,10 +1,11 @@
 // import type { DefaultNamespace, UseTranslationResponse } from '@sotaoi/client/services/lang-service';
 import React from 'react';
 // import { Link } from '@sotaoi/client/router';
-// import { Action } from '@sotaoi/client/action';
 // import { lang } from '@sotaoi/client/lang';
+import { Action } from '@sotaoi/client/action';
 import { AuthRecord } from '@sotaoi/omni/artifacts';
 import { View, Text } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 class MainNavProps {
   public authRecord: null | AuthRecord;
@@ -14,8 +15,19 @@ class MainNavProps {
 }
 const MainNav = (props: MainNavProps): null | React.ReactElement => {
   return (
-    <View style={{ flex: 1 }}>
-      <Text>-- Main Nav --</Text>
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={{ margin: 10 }}>
+        <Text style={{ fontSize: 16 }}>-- Main Nav --</Text>
+      </View>
+      <View style={{ margin: 10 }}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Action.deauth();
+          }}
+        >
+          <Text style={{ color: '#ee0000', fontSize: 16 }}>Logout</Text>
+        </TouchableWithoutFeedback>
+      </View>
     </View>
   );
   // const { t } = lang().useTranslation<UseTranslationResponse<DefaultNamespace>>();
