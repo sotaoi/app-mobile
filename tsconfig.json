@@ -17,6 +17,7 @@
     "paths": {
       "@app/client/*": ["../app-client/*"],
       "@app/mobile/*": ["./*"],
+      "@app/omni/*": ["../app-omni/*"],
       "@sotaoi/client/*": ["../packages/sotaoi-client"],
       "@sotaoi/omni/*": ["../packages/sotaoi-omni"]
     }
