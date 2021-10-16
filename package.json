@@ -37,7 +37,7 @@
     "react-dom": "file:./var/lib/react-dom"
   },
   "dependencies": {
-    "@app/client": "^0.9.1",
+    "@app/client": "git+https://github.com/sotaoi/app-client#0.9.1",
     "@app/omni": "git+https://github.com/sotaoi/app-omni#0.9.1",
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
