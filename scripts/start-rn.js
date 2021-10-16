@@ -1,7 +1,7 @@
 #!/bin/env node
 
-import { execSync } from 'child_process';
-import path from 'path';
+const { execSync } = require('child_process');
+const path = require('path');
 
 require('@app/mobile/var/init').init();
 

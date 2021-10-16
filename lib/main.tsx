@@ -1,3 +1,4 @@
+// import { config } from '@app/omni/config';
 import React from 'react';
 import { Router } from '@sotaoi/client/router';
 import { Bootstrap } from '@sotaoi/client/bootstrap';
@@ -18,6 +19,8 @@ import { HomeMobileView } from '@app/mobile/lib/components/home-mobile-view';
 import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/auth-user-mobile-view';
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
 import { SvgCssUri } from 'react-native-svg';
+
+// config('');
 
 const appInfo = getAppInfo();
 const domain = getAppDomain();

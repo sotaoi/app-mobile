@@ -8,19 +8,20 @@
   },
   "scripts": {
     "bootstrap": "npm install --no-audit --no-fund --legacy-peer-deps",
-    "install:rnsdk": "ts-node ./scripts/install-rnsdk",
-    "adb:devices": "node ./var/adb-devices.js",
+    "install:rnsdk": "node ./scripts/install-rnsdk",
+    "adb:devices": "node ./var/adb-devices",
     "ios:simulators": "xcrun simctl list",
-    "build:android": "node ./android/build-android.js",
-    "build:ios": "node ./ios/build-ios.js",
-    "clean:mobile": "node ./var/clean-mobile.js",
-    "clean:ios": "node ./var/clean-ios.js",
-    "clean:android": "node ./var/clean-android.js",
-    "start:rn": "ts-node ./scripts/start-rn.ts",
-    "start:android": "node ./android/start-android.js",
-    "start:ios": "node ./ios/start-ios.js",
+    "build:android": "node ./android/build-android",
+    "build:ios": "node ./ios/build-ios",
+    "clean:mobile": "node ./var/clean-mobile",
+    "clean:ios": "node ./var/clean-ios",
+    "clean:android": "node ./var/clean-android",
+    "start:rn": "node ./scripts/start-rn",
+    "start:android": "node ./android/start-android",
+    "start:ios": "node ./ios/start-ios",
     "shell:clear-mc": "bash ./shell/clear-mc.sh",
-    "postinstall": "ts-node ./scripts/hooks/posthook"
+    "shell:rnr": "npm run shell:clear-mc && npm run start:rn",
+    "postinstall": "node ./scripts/hooks/posthook"
   },
   "devDependencies": {
     "@app/client": "file:../app-client",
@@ -66,7 +67,6 @@
     "react-native-vector-icons": "^8.0.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "ts-node": "^8.10.2",
     "typescript": "4.1.5"
   }
 }

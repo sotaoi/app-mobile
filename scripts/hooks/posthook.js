@@ -1,10 +1,9 @@
 #!/bin/env node
 
-import 'child_process';
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-const main = async (): Promise<void> => {
+const main = async () => {
   require('@app/mobile/var/init').init();
 
   try {
