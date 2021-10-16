@@ -23,5 +23,5 @@
       "@sotaoi/omni/*": ["../packages/sotaoi-omni"]
     }
   },
-  "include": ["./lib/**/*", "./scripts"]
+  "include": ["./lib/**/*", "./shell", "./scripts"]
 }

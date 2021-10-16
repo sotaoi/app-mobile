@@ -19,6 +19,7 @@
     "start:rn": "ts-node ./scripts/start-rn.ts",
     "start:android": "node ./android/start-android.js",
     "start:ios": "node ./ios/start-ios.js",
+    "shell:clear-mc": "bash ./shell/clear-mc.sh",
     "postinstall": "ts-node ./scripts/hooks/posthook"
   },
   "devDependencies": {
