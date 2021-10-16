@@ -4,9 +4,9 @@ import 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-require('@app/mobile/var/init').init();
-
 const main = async (): Promise<void> => {
+  require('@app/mobile/var/init').init();
+
   try {
     fs.copyFileSync(
       path.resolve('./var/patches/metro/require.js'),

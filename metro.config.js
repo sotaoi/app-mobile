@@ -10,9 +10,10 @@ const extraNodeModules = {
   'react-redux': path.resolve('./node_modules/react-redux'),
 };
 
-const blacklistRegexes = [/scripts[\/\\].*/, /var[\/\\].*/];
+const blacklistRegexes = [/build[\/\\].*/, /deployment[\/\\].*/, /scripts[\/\\].*/, /var[\/\\].*/];
 const watchFolders = [
   path.resolve('./../app-client'),
+  path.resolve('./../app-omni'),
   path.resolve('./../packages/sotaoi-client'),
   path.resolve('./../packages/sotaoi-omni'),
 ];

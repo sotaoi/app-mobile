@@ -25,6 +25,8 @@
     "@app/client": "file:../app-client",
     "@app/mobile": "file:./",
     "@app/omni": "file:../app-omni",
+    "@sotaoi/client": "file:../packages/sotaoi-client",
+    "@sotaoi/omni": "file:../packages/sotaoi-omni",
     "@types/node": "^14",
     "@types/react": "^16.9",
     "@types/react-native": "^0.63.4",
