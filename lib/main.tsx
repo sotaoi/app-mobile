@@ -1,4 +1,3 @@
-// import { config } from '@app/omni/config';
 import React from 'react';
 import { Router } from '@sotaoi/client/router';
 import { Bootstrap } from '@sotaoi/client/bootstrap';
@@ -20,13 +19,13 @@ import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
 import { SvgCssUri } from 'react-native-svg';
 
-// config('');
-
-const appInfo = getAppInfo();
-const domain = getAppDomain();
-const appKernel = new AppKernel();
+let appKernel: AppKernel;
 
 const App = (): any => {
+  const appInfo = getAppInfo();
+  const domain = getAppDomain();
+  appKernel = typeof appKernel === 'undefined' ? new AppKernel() : appKernel;
+
   const [state, setState] = React.useState({
     flag: 'loading',
     error: null,
