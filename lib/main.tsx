@@ -18,13 +18,18 @@ import { HomeMobileView } from '@app/mobile/lib/components/home-mobile-view';
 import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/auth-user-mobile-view';
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
 import { SvgCssUri } from 'react-native-svg';
+import envJson from '@app/mobile/env.json';
 
 let appKernel: AppKernel;
 
 const App = (): any => {
   const appInfo = getAppInfo();
-  const domain = getAppDomain();
+  let domain = getAppDomain();
   appKernel = typeof appKernel === 'undefined' ? new AppKernel() : appKernel;
+
+  if (__DEV__) {
+    envJson?.internalIps?.length && (domain = envJson.internalIps[0]);
+  }
 
   const [state, setState] = React.useState({
     flag: 'loading',
@@ -33,7 +38,7 @@ const App = (): any => {
 
   const routerComponentFn = () => (
     <Router
-      {...routes(
+      {...(routes(
         [HomeMobileView, AuthUserMobileView, RegisterUserMobileView],
         {
           'app.layouts.gate': GateLayout,
@@ -46,7 +51,7 @@ const App = (): any => {
           routerFlux: RouterFlux,
           reactRedux: ReactRedux,
         },
-      )}
+      ) as any)}
     />
   );
 

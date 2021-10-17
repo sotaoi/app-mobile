@@ -3,9 +3,19 @@
 require('@app/mobile/var/init').init();
 const { execSync } = require('child_process');
 const { parameters } = require('../var/parameters');
+const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const main = async () => {
+  const env = {};
+  env.internalIps = Object.values(os.networkInterfaces()).reduce(
+    (r, list) =>
+      r.concat(list.reduce((rr, i) => rr.concat((i.family === 'IPv4' && !i.internal && i.address) || []), [])),
+    [],
+  );
+  fs.writeFileSync(path.resolve('env.json'), JSON.stringify(env, null, 2));
+
   let parametersJoined = 'HELLO=world';
 
   switch (true) {
