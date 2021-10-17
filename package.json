@@ -9,7 +9,8 @@
   "scripts": {
     "bootstrap": "npm install --no-audit --no-fund",
     "bootstrap:prod": "npm install --no-audit --no-fund",
-    "install:rnsdk": "node ./scripts/install-rnsdk",
+    "install:rnsdk": "node ./scripts/install/install-rnsdk",
+    "install:pull": "node ./scripts/install/install-pull",
     "adb:devices": "node ./var/adb-devices",
     "ios:simulators": "xcrun simctl list",
     "build:android": "node ./android/build-android",
@@ -17,12 +18,12 @@
     "clean:mobile": "node ./var/clean-mobile",
     "clean:ios": "node ./var/clean-ios",
     "clean:android": "node ./var/clean-android",
-    "start:rn": "node ./scripts/start-rn",
+    "start:rn": "node ./scripts/start/start-rn",
     "start:android": "node ./android/start-android",
     "start:ios": "node ./ios/start-ios",
     "shell:clear-mc": "bash ./shell/clear-mc.sh",
     "shell:rnr": "npm run shell:clear-mc && npm run start:rn",
-    "postinstall": "node ./scripts/hooks/posthook"
+    "postinstall": "node ./scripts/hook/hook-postinstall"
   },
   "dis:devDependencies": {
     "@app/client": "file:../app-client",
