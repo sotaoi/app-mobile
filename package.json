@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@app/client": "git+https://github.com/sotaoi/app-client#0.9.1",
-    "@app/omni": "git+https://github.com/sotaoi/app-omni#0.9.1",
+    "@app/omni": "file:../../app-omni",
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/async-storage": "^1.12.1",
