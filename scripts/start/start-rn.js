@@ -10,7 +10,7 @@ const main = async () => {
 
   require('@app/mobile/var/init').init();
 
-  execSync(`react-native start --port 8081`, {
+  execSync(`react-native start --host 192.168.0.129 --port 8081`, {
     stdio: 'inherit',
     cwd: path.resolve(__dirname, '../'),
   });
