@@ -15,14 +15,16 @@ const main = async () => {
       path.resolve('./var/patches/react-native/Promise.js'),
       path.resolve('./node_modules/react-native/Libraries/Promise.js'),
     );
-    fs.copyFileSync(
-      path.resolve('./var/patches/react-navigation-stack/validateDeprecatedConfig.js'),
-      path.resolve('./node_modules/react-navigation-stack/lib/module/utils/validateDeprecatedConfig.js'),
-    );
-    fs.copyFileSync(
-      path.resolve('./var/patches/react-navigation-stack/validateDeprecatedOptions.js'),
-      path.resolve('./node_modules/react-navigation-stack/lib/module/utils/validateDeprecatedOptions.js'),
-    );
+    // fs.copyFileSync(
+    //   path.resolve('./var/patches/react-navigation-stack/validateDeprecatedConfig.js'),
+    //   path.resolve('./node_modules/react-navigation-stack/lib/module/utils/validateDeprecatedConfig.js'),
+    // );
+    // fs.copyFileSync(
+    //   path.resolve('./var/patches/react-navigation-stack/validateDeprecatedOptions.js'),
+    //   path.resolve('./node_modules/react-navigation-stack/lib/module/utils/validateDeprecatedOptions.js'),
+    // );
+    !fs.existsSync(path.resolve('./node_modules/@app/omni/env.json')) &&
+      fs.symlinkSync('../../../../app-omni/env.json', path.resolve('./node_modules/@app/omni/env.json'));
   } catch (err) {
     console.warn(err);
   }

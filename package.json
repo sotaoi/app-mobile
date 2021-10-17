@@ -7,8 +7,8 @@
     "node": "14.x"
   },
   "scripts": {
-    "bootstrap": "npm install --no-audit --no-fund --legacy-peer-deps",
-    "bootstrap:prod": "npm install --no-audit --no-fund --legacy-peer-deps",
+    "bootstrap": "npm install --no-audit --no-fund",
+    "bootstrap:prod": "npm install --no-audit --no-fund",
     "install:rnsdk": "node ./scripts/install-rnsdk",
     "adb:devices": "node ./var/adb-devices",
     "ios:simulators": "xcrun simctl list",
@@ -32,15 +32,14 @@
   },
   "devDependencies": {
     "@app/mobile": "file:./",
-    "@app/omni": "file:../app-omni",
     "@types/node": "^14",
     "@types/react": "^16.9",
     "@types/react-native": "^0.63.4",
     "@types/react-redux": "^7.1.9"
   },
   "dependencies": {
-    "@app/client": "file:../app-client/deployment",
-    "@app/omni": "file:../app-omni",
+    "@app/client": "git+https://github.com/sotaoi/app-client#0.9.1",
+    "@app/omni": "git+https://github.com/sotaoi/app-omni#0.9.1",
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/async-storage": "^1.12.1",
@@ -48,9 +47,9 @@
     "@react-native-picker/picker": "^1.9.4",
     "@react-navigation/core": "^3.7",
     "@react-navigation/native": "^3.8",
-    "@sotaoi/client": "file:../packages/sotaoi-client/deployment",
+    "@sotaoi/client": "git+https://github.com/sotaoi/client#0.9.1",
     "@sotaoi/config": "^0.9.1",
-    "@sotaoi/omni": "file:../packages/sotaoi-omni/deployment",
+    "@sotaoi/omni": "git+https://github.com/sotaoi/omni#0.9.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-module-resolver": "^4.1.0",
