@@ -1,4 +1,5 @@
-!.env
-!env.json
+!/mobile.entry.js
+!/.env
+!/env.json
 /package-lock.json
 /ios/qwertypnksmobileboilerplate
