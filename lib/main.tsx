@@ -19,6 +19,7 @@ import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
 import { SvgCssUri } from 'react-native-svg';
 import envJson from '@app/mobile/env.json';
+import { Platform } from 'react-native';
 
 let appKernel: AppKernel;
 
@@ -27,7 +28,7 @@ const App = (): any => {
   let domain = getAppDomain();
   appKernel = typeof appKernel === 'undefined' ? new AppKernel() : appKernel;
 
-  if (__DEV__) {
+  if (__DEV__ && Platform.OS === 'android') {
     envJson?.internalIps?.length && (domain = envJson.internalIps[0]);
   }
 
