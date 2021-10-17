@@ -11,7 +11,7 @@ const main = async () => {
     return;
   }
 
-  execSync('git clone https://github.com/sotaoi/rnsdk', { cwd: dirpath });
+  execSync('git clone https://github.com/sotaoi/rnsdk', { cwd: dirpath, stdio: 'inherit' });
   fs.rmdirSync(path.resolve(dirpath, 'rnsdk/.git'), { recursive: true });
 };
 
