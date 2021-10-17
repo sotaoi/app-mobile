@@ -23,8 +23,9 @@ const main = async () => {
     //   path.resolve('./var/patches/react-navigation-stack/validateDeprecatedOptions.js'),
     //   path.resolve('./node_modules/react-navigation-stack/lib/module/utils/validateDeprecatedOptions.js'),
     // );
-    !fs.existsSync(path.resolve('./node_modules/@app/omni/env.json')) &&
-      fs.symlinkSync('../../../../app-omni/env.json', path.resolve('./node_modules/@app/omni/env.json'));
+
+    fs.existsSync(path.resolve('../app-omni/env.json')) &&
+      fs.copyFileSync(path.resolve('../app-omni/env.json'), path.resolve('./node_modules/@app/omni/env.json'));
   } catch (err) {
     console.warn(err);
   }

@@ -1,11 +1,19 @@
 #!/bin/env node
 
 const { execSync } = require('child_process');
+const fs = require('fs');
 const path = require('path');
 
-require('@app/mobile/var/init').init();
+const main = async () => {
+  fs.existsSync(path.resolve('../app-omni/env.json')) &&
+    fs.copyFileSync(path.resolve('../app-omni/env.json'), path.resolve('./node_modules/@app/omni/env.json'));
 
-execSync(`react-native start --port 8081`, {
-  stdio: 'inherit',
-  cwd: path.resolve(__dirname, '../'),
-});
+  require('@app/mobile/var/init').init();
+
+  execSync(`react-native start --port 8081`, {
+    stdio: 'inherit',
+    cwd: path.resolve(__dirname, '../'),
+  });
+};
+
+main();
