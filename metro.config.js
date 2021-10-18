@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 const blacklist = require('metro-config/src/defaults/blacklist');
 const { getDefaultConfig } = require('metro-config');
 

@@ -5,8 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const main = async () => {
-  fs.existsSync(path.resolve('../app-omni/env.json')) &&
-    fs.copyFileSync(path.resolve('../app-omni/env.json'), path.resolve('./node_modules/@app/omni/env.json'));
+  fs.existsSync(path.resolve('../pocket/env.json')) &&
+    fs.copyFileSync(path.resolve('../pocket/env.json'), path.resolve('./node_modules/@app/omni/env.json'));
 
   require('@app/mobile/var/init').init();
 
