@@ -15,6 +15,7 @@
     "ios:simulators": "xcrun simctl list",
     "build:android": "node ./android/build-android",
     "build:ios": "node ./ios/build-ios",
+    "clean:bootstrap": "node ./scripts/clean/clean-bootstrap",
     "clean:mobile": "node ./var/clean-mobile",
     "clean:ios": "node ./var/clean-ios",
     "clean:android": "node ./var/clean-android",
@@ -24,12 +25,6 @@
     "shell:clear-mc": "bash ./shell/clear-mc.sh",
     "shell:rnr": "npm run shell:clear-mc && npm run start:rn",
     "postinstall": "node ./scripts/hook/hook-postinstall"
-  },
-  "dis:devDependencies": {
-    "@app/client": "file:../app-client",
-    "@sotaoi/client": "file:../packages/sotaoi-client",
-    "react": "file:./var/lib/react",
-    "react-dom": "file:./var/lib/react-dom"
   },
   "devDependencies": {
     "@app/mobile": "file:./",
@@ -49,7 +44,7 @@
     "@react-navigation/core": "^3.7",
     "@react-navigation/native": "^3.8",
     "@sotaoi/client": "git+https://github.com/sotaoi/client#0.9.1",
-    "@sotaoi/config": "^0.9.1",
+    "@sotaoi/config": "git+https://github.com/sotaoi/config#0.9.1",
     "@sotaoi/omni": "git+https://github.com/sotaoi/omni#0.9.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-import": "^3.0.0",
