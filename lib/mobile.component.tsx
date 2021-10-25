@@ -7,7 +7,7 @@ import { BackHandler } from 'react-native';
 import { Provider } from 'react-redux';
 import { RenderComponent } from '@sotaoi/omni/state';
 
-let initialised = false;
+let initialized = false;
 let forceUpdate: () => void = () => undefined;
 let routes: Routes = {
   routeMatch: null,
@@ -19,8 +19,8 @@ const MobileComponent = (): null | React.ReactElement => {
   const extendedComponents = Navigation.extendedComponents;
 
   let routerRefreshListener: () => void, backHandler: () => true;
-  if (!initialised) {
-    initialised = true;
+  if (!initialized) {
+    initialized = true;
 
     routerRefreshListener = RouterEvents.listen('router-refresh', () => {
       const to = RouterEvents.getRedirectTo() || RouteChange.getCurrentPath();
