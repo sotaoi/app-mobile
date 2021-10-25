@@ -13,6 +13,7 @@
     "install:pull": "node ./scripts/install/install-pull",
     "adb:devices": "node ./var/adb-devices",
     "ios:simulators": "xcrun simctl list",
+    "deploy:mobile": "node ./scripts/deploy/deploy-mobile",
     "build:android": "node ./android/build-android",
     "build:ios": "node ./ios/build-ios",
     "clean:bootstrap": "node ./scripts/clean/clean-bootstrap",
