@@ -19,7 +19,8 @@ import { AuthUserMobileView } from '@app/mobile/lib/components/gate-layout/views
 import { RegisterUserMobileView } from '@app/mobile/lib/components/gate-layout/views/user/register-user-mobile-view';
 import { SvgCssUri } from 'react-native-svg';
 import envJson from '@app/mobile/env.json';
-import { Platform } from 'react-native';
+import { Platform, View, Text } from 'react-native';
+import { store } from '@sotaoi/client/store';
 
 let appKernel: AppKernel;
 
@@ -87,6 +88,15 @@ const App = (): any => {
         </PaperProvider>
       );
     case state.flag === 'started':
+      if (!!store().getState()['app.coreState.maintenance']) {
+        return (
+          <PaperProvider>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Text>Service is currently unavailable, we are currently undergoing maintenance operations</Text>
+            </View>
+          </PaperProvider>
+        );
+      }
       return <PaperProvider>{routerComponentFn()}</PaperProvider>;
     case state.flag === 'failed':
       return (
